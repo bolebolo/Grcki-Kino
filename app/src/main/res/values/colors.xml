@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- boje za novu temu -->
+    <color name="mozzart_purple_50">#cbbddf</color>
+    <color name="mozzart_purple_100">#a992cb</color>
+    <color name="mozzart_purple_200">#8866b6</color>
+    <color name="mozzart_purple_300">#6f46a8</color>
+    <color name="mozzart_purple_400">#572699</color>
+    <color name="mozzart_purple_500">#4f2294</color>
+    <color name="mozzart_purple_600">#431a8b</color>
+    <color name="mozzart_purple_700">#431a8b</color>
+    <color name="mozzart_purple_800">#240775</color>           <!-- prava mocartova boja-->
+    <color name="mozzart_purple_900">#1a0359</color>
+
+
+    <color name="mozzart_yellow_900">#fe730f</color>
+    <color name="mozzart_yellow_800">#fe9212</color>
+    <color name="mozzart_yellow_700">#ffa314</color>
+    <color name="mozzart_yellow_600">#ffb617</color>   <!-- prava mocartova boja-->
+    <color name="mozzart_yellow_500">#ffc31d</color>
+    <color name="mozzart_yellow_400">#ffcc32</color>
+    <color name="mozzart_yellow_300">#ffd755</color>
+    <color name="mozzart_yellow_200">#ffe185</color>
+    <color name="mozzart_yellow_100">#ffedb5</color>
+    <color name="mozzart_yellow_50">#fff8e2</color>
+
+    <color name="red_800">#BF152C</color>
+
+
+    <!-- ball colors-->
+    <color name="balls_color_1_10">#FDE300</color>
+    <color name="balls_color_11_20">#FF802B</color>
+    <color name="balls_color_21_30">#FF1E00</color>
+    <color name="balls_color_31_40">#F160D1</color>
+    <color name="balls_color_41_50">#9F06FF</color>
+    <color name="balls_color_51_60">#54F8F2</color>
+    <color name="balls_color_61_70">#24F11B</color>
+    <color name="balls_color_71_80">#093ED8</color>
+</resources>

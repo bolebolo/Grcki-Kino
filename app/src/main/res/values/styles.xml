@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MozzartToolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="titleTextColor">@color/mozzart_yellow_600</item>
+        <item name="subtitleTextColor">@color/mozzart_yellow_600</item>
+        <item name="android:background">@color/mozzart_purple_800</item>
+<!--        <item name="logo">@drawable/ic_greek_flag</item>-->
+    </style>
+
+    <!--  buttons style-->
+    <style name="MyFullButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">?attr/colorSecondary</item>
+    </style>
+
+    <style name="MyOutlinedButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">?attr/colorSecondary</item>
+    </style>
+
+    <style name="MyTextButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">?attr/colorSecondary</item>
+    </style>
+
+    <style name="MyNightFullButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyNightOutlinedButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">?attr/colorSecondary</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+    </style>
+</resources>

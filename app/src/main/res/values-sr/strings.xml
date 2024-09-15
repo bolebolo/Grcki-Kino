@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Grcki Kino</string>
+
+    <!-- globla strings -->
+    <string name="ok">Ok</string>
+    <string name="cancel">Otkaži</string>
+    <string name="settings">Podešavanja</string>
+
+    <!--main activity - fragment page names -->
+    <string name="title_next_draw">Naredna Kola</string>
+    <string name="title_more_games">Jos Igara</string>
+    <string name="title_results">Rezultati</string>
+
+    <!--draw activity - fragment page names -->
+    <string name="title_ticket">Talon</string>
+    <string name="title_drawing_live">Izvlacenje uzivo</string>
+    <string name="title_round_result">Rezultati izvlacenja</string>
+
+
+    <!--fragment upcoming drows strings -->
+    <string name="draw_time">Vreme Izvlacenja</string>
+    <string name="remaining_time">Preostalo za uplatu</string>
+
+    <!--page drawing round -->
+    <string name="round_id">Kolo: %1$d</string>
+    <string name="draw_time_">Vreme Izvlacenja: %1$s</string>
+    <string name="draw_in">Izvlacenje za: %1$s</string>
+
+    <!--fragment tiket -->
+    <string name="random_numbers_text">Nasumicni brojevi</string>
+    <string name="numbers_">Brojeva: </string>
+    <string name="quota">Kvota:  %1$s</string>
+    <string name="clear_selection">Ukloni sve</string>
+    <string name="payment">Uplata</string>
+
+    <!--fragment live draw -->
+    <string name="error_loading_page">Neuspešno učitavanje stranice!</string>
+
+    <!--snackbar msgs -->
+    <string name="internet_lost_snackbar_message">Internet konekcija izgubljena!\nProverite Vašu internet konekciju</string>
+
+    <!--toast msgs -->
+    <string name="max_number_of_selections">Maksimalan broj selekcija je 15</string>
+
+    <string name="page_under_constraction">Stranica u Izradi!</string>
+</resources>

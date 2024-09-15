@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Greek Kino</string>
+
+    <!-- globla strings -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="settings">Settings</string>
+
+    <!--main activity page names -->
+    <string name="title_next_draw">Next draws</string>
+    <string name="title_more_games">More games</string>
+    <string name="title_results">Results</string>
+
+    <!--draw activity - fragment page names -->
+    <string name="title_ticket">Ticket</string>
+    <string name="title_drawing_live">Live draw</string>
+    <string name="title_round_result">Draw results</string>
+
+
+    <!--page upcoming draws -->
+    <string name="draw_time">Draw time</string>
+    <string name="remaining_time">Payment time left</string>
+
+
+    <!--page drawing round -->
+    <string name="round_id">Round: %1$d</string>
+    <string name="draw_time_">Draw time: %1$s</string>
+    <string name="draw_in">Draw in: </string>
+
+    <!--fragment tiket -->
+    <string name="random_numbers_text">Random pick</string>
+    <string name="numbers_">Numbers: </string>
+    <string name="quota">Quota: %1$s</string>
+    <string name="clear_selection">Clear all</string>
+    <string name="payment">Payment</string>
+
+    <!--fragment live draw -->
+    <string name="error_loading_page">Failed to load the page!</string>
+
+    <!--snackbar msgs -->
+    <string name="internet_lost_snackbar_message">Internet Connection Lost!\nPlease check your internet connection</string>
+
+    <!--toast msgs -->
+    <string name="max_number_of_selections">Maximum number of selections is 15.</string>
+
+    <string name="page_under_constraction">Page under constraction!</string>
+
+    <!--non translatable -->
+    <string name="countdown_time_format" translatable="false">%02d:%02d</string>
+    <string name="countdown_time_hours_format" translatable="false">%01d:%02d:%02d</string>
+
+    <!--arrays -->
+    <string-array translatable="false" name="number_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+</resources>

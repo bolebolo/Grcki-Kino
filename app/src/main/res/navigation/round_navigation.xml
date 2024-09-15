@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/round_mobile_navigation"
+    app:startDestination="@+id/navigation_ticket">
+
+    <fragment
+        android:id="@+id/navigation_ticket"
+        android:name="com.app.grckikino.ui.ticket.TicketFragment"
+        android:label="@string/title_ticket"
+        tools:layout="@layout/fragment_ticket" />
+
+    <fragment
+        android:id="@+id/navigation_live_draw"
+        android:name="com.app.grckikino.ui.live_draw.LiveDrawFragment"
+        android:label="@string/title_drawing_live"
+        tools:layout="@layout/fragment_live_drow" />
+
+    <fragment
+        android:id="@+id/navigation_draw_result"
+        android:name="com.app.grckikino.ui.round_result.RoundResultFragment"
+        android:label="@string/title_round_result"
+        tools:layout="@layout/fragment_round_result" />
+</navigation>

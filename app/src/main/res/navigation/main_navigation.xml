@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.app.grckikino.ui.upcoming_rounds.UpcomingRoundsFragment"
+        android:label="@string/title_next_draw"
+        tools:layout="@layout/fragment_upcoming_draws" />
+
+    <fragment
+        android:id="@+id/navigation_more_games"
+        android:name="com.app.grckikino.ui.more_games.MoreGamesFragment"
+        android:label="@string/title_more_games"
+        tools:layout="@layout/fragment_more_games" />
+
+    <fragment
+        android:id="@+id/navigation_results"
+        android:name="com.app.grckikino.ui.results.ResultsFragment"
+        android:label="@string/title_results"
+        tools:layout="@layout/fragment_results" />
+</navigation>

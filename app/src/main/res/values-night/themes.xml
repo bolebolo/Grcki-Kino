@@ -1,0 +1,55 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.GrckiKino" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+<!--        <item name="android:fontFamily">@font/roboto_regular</item>-->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/mozzart_purple_800</item>
+        <item name="colorPrimaryDark">@color/mozzart_purple_900</item>
+        <item name="colorPrimaryVariant">@color/mozzart_purple_200</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/mozzart_yellow_600</item>
+        <item name="colorSecondaryVariant">@color/mozzart_yellow_300</item>
+        <item name="colorOnSecondary">@color/mozzart_purple_800</item>
+
+        <!--bacground  colors-->
+        <item name="backgroundColor">@color/black</item>
+        <item name="colorOnBackground">@color/white</item>
+
+        <!--Surface  colors-->
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+
+        <!--Surface  colors-->
+        <item name="colorError">@color/red_800</item>
+        <item name="colorOnError">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+
+        <!-- Customize your theme here. -->
+        <!-- toolbar style-->
+        <item name="toolbarStyle">@style/MozzartToolbar</item>
+        <item name="homeAsUpIndicator">@drawable/ic_arrow_back</item>
+
+        <!-- button style-->
+        <item name="materialButtonStyle">@style/MyNightFullButtonStyle</item>
+        <item name="materialButtonOutlinedStyle">@style/MyNightOutlinedButtonStyle</item>
+
+<!--        &lt;!&ndash;        alert dialog style&ndash;&gt;-->
+<!--        <item name="materialAlertDialogTheme">@style/MyAlertDialogStyle</item>-->
+
+<!--        &lt;!&ndash;       chips style&ndash;&gt;-->
+<!--        <item name="chipStyle">@style/MyCustomChipStyleDarkTheme</item>-->
+
+<!--        &lt;!&ndash;       snackbar style&ndash;&gt;-->
+<!--        <item name="snackbarStyle">@style/MySnackbar</item>-->
+
+<!--        &lt;!&ndash;       tablayout style&ndash;&gt;-->
+<!--        <item name="tabStyle">@style/MyCustomTabLayoutTheme</item>-->
+    </style>
+
+    <style name="FullScreenDayNightTheme" parent="Theme.GrckiKino">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
