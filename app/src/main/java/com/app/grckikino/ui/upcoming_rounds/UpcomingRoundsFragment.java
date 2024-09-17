@@ -4,7 +4,6 @@ import static com.app.grckikino.utils.KeysAndConstants.UPCOMING_ROUND_EXTRAS;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +17,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.app.grckikino.activities.RoundActivity;
+import com.app.grckikino.activities.round_activity.RoundActivity;
 import com.app.grckikino.adapters.UpcomingRoundsListAdapter;
 import com.app.grckikino.databinding.FragmentUpcomingDrawsBinding;
 import com.app.grckikino.callbacks.UpcomingRoundAdapterCallback;
-import com.app.grckikino.models.UpcomingRoundsModel;
+import com.app.grckikino.models.RoundsModel;
 
 import java.util.ArrayList;
 
@@ -59,13 +58,11 @@ public class UpcomingRoundsFragment extends Fragment implements UpcomingRoundAda
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("onResume", "onResume ");
         viewModel.removeAllExpired();
     }
 
     @Override
     public void onDestroy() {
-        Log.e("onDestroy", "onDestroy ");
         adapter.stopHandler();
         super.onDestroy();
     }
@@ -94,7 +91,7 @@ public class UpcomingRoundsFragment extends Fragment implements UpcomingRoundAda
     }
 
     @Override
-    public void onUpcomingDrawClicked(UpcomingRoundsModel upcomingRound) {
+    public void onUpcomingDrawClicked(RoundsModel upcomingRound) {
         if (upcomingRound != null) {
             Intent intent = new Intent(getContext(), RoundActivity.class);
             Bundle patrolBundle = new Bundle();

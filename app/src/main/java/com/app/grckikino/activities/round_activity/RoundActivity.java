@@ -1,21 +1,23 @@
-package com.app.grckikino.activities;
+package com.app.grckikino.activities.round_activity;
 
+import static com.app.grckikino.utils.KeysAndConstants.STATUS_RESULTS;
 import static com.app.grckikino.utils.KeysAndConstants.UPCOMING_ROUND_EXTRAS;
 
-import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.app.grckikino.R;
+import com.app.grckikino.activities.BaseActivity;
 import com.app.grckikino.databinding.ActivityRoundBinding;
-import com.app.grckikino.models.UpcomingRoundsModel;
+import com.app.grckikino.models.RoundsModel;
 import com.app.grckikino.utils.Utils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -24,7 +26,8 @@ public class RoundActivity extends BaseActivity {
 
     private ActivityRoundBinding binding;
     private Snackbar internetSnackbar;
-    private   NavController navController;
+    private NavController navController;
+    private RoundActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,9 @@ public class RoundActivity extends BaseActivity {
 
         binding = ActivityRoundBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        viewModel = new ViewModelProvider(this).get(RoundActivityViewModel.class);
+        viewModel.getRound().observe(this, this::handleUi);
 
         BottomNavigationView navView = findViewById(R.id.round_nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -80,11 +86,9 @@ public class RoundActivity extends BaseActivity {
 
     private void handleIntent() {
         Bundle roundBundle = getIntent().getBundleExtra(UPCOMING_ROUND_EXTRAS);
-        UpcomingRoundsModel roundsModel = roundBundle.getParcelable(UPCOMING_ROUND_EXTRAS);
-        binding.drawTimeText.setText(getString(R.string.draw_time_, Utils.getTimeString(roundsModel.getDrawTime())));
-//        binding.drawContdownTime.setText(getString(R.string.round_id, roundsModel.getDrawId()));
-        Utils.countdownTime(this,  binding.drawContdownTime, roundsModel);
-
+        RoundsModel roundsModel = roundBundle.getParcelable(UPCOMING_ROUND_EXTRAS);
+        viewModel.setRound(roundsModel);
+        Utils.countdownTime(viewModel.getRound());
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
@@ -92,6 +96,30 @@ public class RoundActivity extends BaseActivity {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
         });
+    }
+
+    private void handleUi(RoundsModel roundsModel) {
+        if (roundsModel.getStatus().equalsIgnoreCase(STATUS_RESULTS)){
+            navController.navigate(R.id.navigation_live_draw);
+        }
+        binding.drawTimeText.setText(getString(R.string.draw_time_, Utils.getTimeString(roundsModel.getDrawTime())));
+        long remainingTime = roundsModel.getDrawTime() - System.currentTimeMillis();
+        int hours = (int) (remainingTime / (1000 * 60 * 60));
+        int minutes = (int) ((remainingTime / (1000 * 60)) % 60);
+        int seconds = (int) (remainingTime / 1000) % 60;
+
+        if (hours > 0) {
+            binding.drawContdownTime.setText(getString(R.string.countdown_time_hours_format, hours, minutes, seconds));
+        } else {
+            binding.drawContdownTime.setText(getString(R.string.countdown_time_format, minutes, seconds));
+        }
+        if (hours * 360 + minutes * 60 + seconds < 10) {
+            binding.drawContdownTime.setTextColor(getResources().getColor(R.color.red_800));
+            binding.drawContdownTime.setTypeface(null, Typeface.BOLD);
+        } else {
+            binding.drawContdownTime.setTextColor(getResources().getColor(R.color.black));
+            binding.drawContdownTime.setTypeface(null, Typeface.NORMAL);
+        }
     }
 
 }

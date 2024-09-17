@@ -7,15 +7,15 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.app.grckikino.models.UpcomingRoundsModel;
-import com.app.grckikino.retrofit.api_calls.ApiCallUpcomingRounds;
+import com.app.grckikino.models.RoundsModel;
+import com.app.grckikino.retrofit.api_calls.ApiCalls;
 
 import java.util.ArrayList;
 
 
 public class UpcomingRoundsViewModel extends ViewModel {
 
-    private MutableLiveData<ArrayList<UpcomingRoundsModel>> upcomingDrawsArrayList;
+    private MutableLiveData<ArrayList<RoundsModel>> upcomingDrawsArrayList;
 
 
     public UpcomingRoundsViewModel() {
@@ -24,17 +24,17 @@ public class UpcomingRoundsViewModel extends ViewModel {
 
 
     public void initList() {
-        ApiCallUpcomingRounds.getUpcomingRounds(upcomingDrawsArrayList, GAME_ID, LOAD_UPCOMING_ROUNDS);
+        ApiCalls.getUpcomingRounds(upcomingDrawsArrayList, GAME_ID, LOAD_UPCOMING_ROUNDS);
     }
 
 
-    public LiveData<ArrayList<UpcomingRoundsModel>> getUpcomingDrawsList() {
+    public LiveData<ArrayList<RoundsModel>> getUpcomingDrawsList() {
         return upcomingDrawsArrayList;
     }
 
 
     public void removeItem(long id, int position) { // kada istekne vreme
-        ArrayList<UpcomingRoundsModel> currentList = upcomingDrawsArrayList.getValue();
+        ArrayList<RoundsModel> currentList = upcomingDrawsArrayList.getValue();
         if (currentList != null && position >= 0 && position < currentList.size()) {
             if (currentList.get(position).getDrawId() == id) {
                 currentList.remove(position);
@@ -45,9 +45,9 @@ public class UpcomingRoundsViewModel extends ViewModel {
     }
 
     public void removeAllExpired() {
-        ArrayList<UpcomingRoundsModel> arrayList = new ArrayList<>();
+        ArrayList<RoundsModel> arrayList = new ArrayList<>();
         if (upcomingDrawsArrayList.getValue() != null) {
-            for (UpcomingRoundsModel item : upcomingDrawsArrayList.getValue()) {
+            for (RoundsModel item : upcomingDrawsArrayList.getValue()) {
                 if (item.getDrawTime() - System.currentTimeMillis() > 5000) {
                     arrayList.add(item);
                 }
@@ -60,11 +60,11 @@ public class UpcomingRoundsViewModel extends ViewModel {
     }
 
 
-    private ArrayList<UpcomingRoundsModel> loadItems(int x) {
-        ArrayList<UpcomingRoundsModel> arrayList = new ArrayList<>();
+    private ArrayList<RoundsModel> loadItems(int x) {
+        ArrayList<RoundsModel> arrayList = new ArrayList<>();
         for (int i = 0; i < x; i++) {
 //            if (getCurrentTime(i) - System.currentTimeMillis() >5){
-            arrayList.add(new UpcomingRoundsModel(i + 5, getCurrentTime(i)));
+            arrayList.add(new RoundsModel(i + 5, getCurrentTime(i)));
         }
 //        }
         return arrayList;

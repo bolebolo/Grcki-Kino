@@ -13,13 +13,12 @@
 
     <fragment
         android:id="@+id/navigation_live_draw"
-        android:name="com.app.grckikino.ui.live_draw.LiveDrawFragment"
+        android:name="com.app.grckikino.ui.live_draw.LiveDrawFragmentKt"
         android:label="@string/title_drawing_live"
         tools:layout="@layout/fragment_live_drow" />
 
     <fragment
         android:id="@+id/navigation_draw_result"
-        android:name="com.app.grckikino.ui.round_result.RoundResultFragment"
-        android:label="@string/title_round_result"
-        tools:layout="@layout/fragment_round_result" />
+        android:name="com.app.grckikino.ui.round_result.ResultRoundFragmentKt"
+        android:label="@string/title_round_result" />
 </navigation>

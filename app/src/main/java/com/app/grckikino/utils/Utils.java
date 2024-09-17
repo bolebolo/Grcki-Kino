@@ -1,21 +1,20 @@
 package com.app.grckikino.utils;
 
+import static com.app.grckikino.utils.KeysAndConstants.DATE_FORMAT;
 import static com.app.grckikino.utils.KeysAndConstants.QUOTA_FORMAT;
+import static com.app.grckikino.utils.KeysAndConstants.STATUS_RESULTS;
 import static com.app.grckikino.utils.KeysAndConstants.TIME_FORMAT;
 import static com.app.grckikino.utils.KeysAndConstants.TWO_DECIMAL_FORMAT;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.util.TypedValue;
-
 import androidx.core.content.ContextCompat;
-
+import androidx.lifecycle.MutableLiveData;
 import com.app.grckikino.R;
 import com.app.grckikino.models.TicketNumberModel;
-import com.app.grckikino.models.UpcomingRoundsModel;
-import com.google.android.material.textview.MaterialTextView;
+import com.app.grckikino.models.RoundsModel;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -27,6 +26,11 @@ public class Utils {
 
     public static String getTimeString(long timestamp) {
         SimpleDateFormat sdformat = new SimpleDateFormat(TIME_FORMAT, Locale.getDefault());
+        return sdformat.format(new Date(timestamp));
+    }
+
+    public static String getDateString(long timestamp) {
+        SimpleDateFormat sdformat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
         return sdformat.format(new Date(timestamp));
     }
 
@@ -59,36 +63,22 @@ public class Utils {
         return Math.round(dp * density);
     }
 
-    public static void countdownTime(Context context, MaterialTextView textView, UpcomingRoundsModel upcomingRounds) {//ovo je moglo da se uradi ujedno sa onim brojacem preko handlera u adapteru, ali eto da pokazem da znam da koristim vise stvari za odbrojavanje XD
-        long remainingTime = upcomingRounds.getDrawTime() - System.currentTimeMillis();
-        new CountDownTimer(remainingTime, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                int hours = (int) (millisUntilFinished / (1000 * 60 * 60));
-                int minutes = (int) ((millisUntilFinished / (1000 * 60)) % 60);
-                int seconds = (int) (millisUntilFinished / 1000) % 60;
-
-                if (hours > 0) {
-                    textView.setText(context.getString(R.string.countdown_time_hours_format, hours, minutes, seconds));
-                } else {
-                    textView.setText(context.getString(R.string.countdown_time_format, minutes, seconds));
+    public static void countdownTime(MutableLiveData<RoundsModel> liveData) {
+        RoundsModel roundsModel = liveData.getValue();
+        if (roundsModel != null) {
+            long remainingTime = roundsModel.getDrawTime() - System.currentTimeMillis();
+            new CountDownTimer(remainingTime, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    liveData.setValue(roundsModel);
                 }
-                if (hours * 360 + minutes * 60 + seconds < 10) {
-                    textView.setTextColor(context.getResources().getColor(R.color.red_800));
-                    textView.setTypeface(null, Typeface.BOLD);
-                } else {
-                    textView.setTextColor(context.getResources().getColor(R.color.black));
-                    textView.setTypeface(null, Typeface.NORMAL);
+                @Override
+                public void onFinish() {
+                    roundsModel.setStatus(STATUS_RESULTS);
+                    //Todo ovde mozemo napraviti da se prebaci na fragment livedraw i zabrani pristup popunjavanju listica ako je isteklo vreme
                 }
-            }
-
-            @Override
-            public void onFinish() {
-                textView.setTypeface(null, Typeface.BOLD);
-                textView.setTextColor(context.getResources().getColor(R.color.red_800));
-                textView.setText(context.getString(R.string.countdown_time_format, 0, 0));
-            }
-        }.start();
+            }.start();
+        }
     }
 
     public static int getTextColorOnSurface(Context context) {

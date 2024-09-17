@@ -1,16 +1,13 @@
 package com.app.grckikino.retrofit;
 
-import com.app.grckikino.models.UpcomingRoundsModel;
-
-import org.json.JSONObject;
+import com.app.grckikino.models.RoundsHistoryModel;
+import com.app.grckikino.models.RoundsModel;
 
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface RetrofitAPI {
@@ -18,11 +15,14 @@ public interface RetrofitAPI {
 
 
         @GET("{gameId}/upcoming/{number}")
-        Call<ArrayList<UpcomingRoundsModel>> getUpcomingRounds(@Path("gameId") int gameId, @Path("number") int number);
+        Call<ArrayList<RoundsModel>> getUpcomingRounds(@Path("gameId") int gameId, @Path("number") int number);
 
-        //    @Headers("Content-Type: application/json")
-//        @POST("braintree_checkout")
-//        Call<TransactionModel> checkout(@Body JSONObject nonce);
+
+        @GET("{gameId}/{drawId}")
+        Call<RoundsModel> getExactRound(@Path("gameId") int gameId, @Path("drawId") long number);
+
+        @GET("{gameId}/draw-date/{fromDate}/{toDate}")
+        Call<RoundsHistoryModel> getResultsHistory(@Path("gameId") int gameId, @Path("fromDate") String fromDate, @Path("toDate") String toDate);
 
 
 }

@@ -37,6 +37,9 @@
     <!--fragment live draw -->
     <string name="error_loading_page">Neuspešno učitavanje stranice!</string>
 
+    <!--fragment results -->
+    <string name="header_text_result_page">Vreme Izvlacenja: %1$s | Kolo: %2$d</string>
+
     <!--snackbar msgs -->
     <string name="internet_lost_snackbar_message">Internet konekcija izgubljena!\nProverite Vašu internet konekciju</string>
 

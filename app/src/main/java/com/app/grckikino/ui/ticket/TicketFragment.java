@@ -1,6 +1,6 @@
 package com.app.grckikino.ui.ticket;
 
-import static com.app.grckikino.utils.KeysAndConstants.NUMBERS_IN_COLUMN;
+import static com.app.grckikino.utils.KeysAndConstants.COLUMN_NUMBERS_IN_TICKET;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -76,7 +76,7 @@ public class TicketFragment extends Fragment implements TicketAdapterCallback, A
 
     private void setupTicketRecicler() {
         RecyclerView recyclerView = binding.ticketRecyclerView;
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), NUMBERS_IN_COLUMN);// ja iskreno mislim da je previse sitno da bude 10 brojeva u jednoj koloni, msm da bi bilo ok 8 (moze se promeniti broj ovde
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), COLUMN_NUMBERS_IN_TICKET);// ja iskreno mislim da je previse sitno da bude 10 brojeva u jednoj koloni, msm da bi bilo ok 8 (moze se promeniti broj ovde
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(2);

@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.grckikino.R;
 import com.app.grckikino.databinding.ItemUpcomingDrawsBinding;
 import com.app.grckikino.callbacks.UpcomingRoundAdapterCallback;
-import com.app.grckikino.models.UpcomingRoundsModel;
+import com.app.grckikino.models.RoundsModel;
 import com.app.grckikino.utils.Utils;
 
 import java.util.ArrayList;
@@ -43,19 +43,19 @@ public class UpcomingRoundsListAdapter extends RecyclerView.Adapter<UpcomingRoun
 
     private final Context context;
     private static final int TYPE_ITEM = 1;
-    private final ArrayList<UpcomingRoundsModel> upcomingDrawsList;
+    private final ArrayList<RoundsModel> upcomingDrawsList;
     private UpcomingRoundAdapterCallback drawCallback;
     private Handler handler = new Handler(Looper.getMainLooper());
     private long updateInterval = 1000L; // 1 sekunda
 
-    public UpcomingRoundsListAdapter(Context context, ArrayList<UpcomingRoundsModel> confirmationsArrayList, UpcomingRoundAdapterCallback drawCallback) {
+    public UpcomingRoundsListAdapter(Context context, ArrayList<RoundsModel> confirmationsArrayList, UpcomingRoundAdapterCallback drawCallback) {
         this.context = context;
         this.upcomingDrawsList = confirmationsArrayList;
         this.drawCallback = drawCallback;
         startGlobalTimer();
     }
 
-    public void updateList(ArrayList<UpcomingRoundsModel> confirmationsArrayList) {
+    public void updateList(ArrayList<RoundsModel> confirmationsArrayList) {
         int oldSize = upcomingDrawsList.size();
         int newSize = confirmationsArrayList.size();
         upcomingDrawsList.clear();
@@ -76,7 +76,7 @@ public class UpcomingRoundsListAdapter extends RecyclerView.Adapter<UpcomingRoun
 
     @Override
     public void onBindViewHolder(@NonNull final ItemViewHolder holder, int position) {
-        UpcomingRoundsModel upcomingDrawsModel = getItem(position);
+        RoundsModel upcomingDrawsModel = getItem(position);
         holder.bind(context, upcomingDrawsModel, drawCallback);
 //        holder.binding.drawTime.setText(getTimeString(upcomingDrawsModel.getDrawTime()));
 //
@@ -87,7 +87,7 @@ public class UpcomingRoundsListAdapter extends RecyclerView.Adapter<UpcomingRoun
 
     }
 
-    private UpcomingRoundsModel getItem(int position) {
+    private RoundsModel getItem(int position) {
         return upcomingDrawsList.get(position);
     }
 
@@ -207,7 +207,7 @@ public class UpcomingRoundsListAdapter extends RecyclerView.Adapter<UpcomingRoun
         }
 
         // Metoda za bindovanje podataka
-        public void bind(Context context, UpcomingRoundsModel upcomingDrawsModel, UpcomingRoundAdapterCallback drawCallback) {
+        public void bind(Context context, RoundsModel upcomingDrawsModel, UpcomingRoundAdapterCallback drawCallback) {
             binding.upcomingItemView.setOnClickListener(view -> drawCallback.onUpcomingDrawClicked(upcomingDrawsModel));
             binding.drawTime.setText(Utils.getTimeString(upcomingDrawsModel.getDrawTime()));
             long remainingTime = upcomingDrawsModel.getDrawTime() - System.currentTimeMillis();

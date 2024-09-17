@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.RoundActivity" android:exported="true" />
+        <activity android:name=".activities.round_activity.RoundActivity" android:exported="true" />
     </application>
 
 </manifest>

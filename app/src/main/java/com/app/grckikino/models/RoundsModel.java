@@ -3,14 +3,16 @@ package com.app.grckikino.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class UpcomingRoundsModel implements Parcelable {
+public class RoundsModel implements Parcelable {
 
     private long gameId, drawId, drawTime, visualDraw;
     private int drawBreak; // pretpostavljam da je drawBreak  broj na kome se kolo zaustavlja tj na kome je dobitnik izvucen i ne bi trebao da prevazilazi kapacitet int-a
     private String status;
 
+    private WinningNumbers winningNumbers;
 
-    public UpcomingRoundsModel(long gameId, long drawId, long drawTime, int visualDraw, int drawBreak, String status) {
+
+    public RoundsModel(long gameId, long drawId, long drawTime, int visualDraw, int drawBreak, String status) {
         this.gameId = gameId;
         this.drawId = drawId;
         this.drawTime = drawTime;
@@ -20,31 +22,32 @@ public class UpcomingRoundsModel implements Parcelable {
     }
 
     @SuppressWarnings("unused")
-    public UpcomingRoundsModel() {
+    public RoundsModel() {
     }
-    public UpcomingRoundsModel(long drawId, long drawTime) {
+    public RoundsModel(long drawId, long drawTime) {
         this.drawId=drawId;
         this.drawTime=drawTime;
     }
 
-    protected UpcomingRoundsModel(Parcel in) {
+    protected RoundsModel(Parcel in) {
         gameId = in.readLong();
         drawId = in.readLong();
         drawTime = in.readLong();
         visualDraw = in.readLong();
         drawBreak = in.readInt();
         status = in.readString();
+        winningNumbers = in.readParcelable(WinningNumbers.class.getClassLoader());
     }
 
-    public static final Creator<UpcomingRoundsModel> CREATOR = new Creator<UpcomingRoundsModel>() {
+    public static final Creator<RoundsModel> CREATOR = new Creator<RoundsModel>() {
         @Override
-        public UpcomingRoundsModel createFromParcel(Parcel in) {
-            return new UpcomingRoundsModel(in);
+        public RoundsModel createFromParcel(Parcel in) {
+            return new RoundsModel(in);
         }
 
         @Override
-        public UpcomingRoundsModel[] newArray(int size) {
-            return new UpcomingRoundsModel[size];
+        public RoundsModel[] newArray(int size) {
+            return new RoundsModel[size];
         }
     };
 
@@ -61,6 +64,7 @@ public class UpcomingRoundsModel implements Parcelable {
         dest.writeLong(visualDraw);
         dest.writeInt(drawBreak);
         dest.writeString(status);
+        dest.writeParcelable(winningNumbers,0);
     }
 
     public long getGameId() {
@@ -111,4 +115,11 @@ public class UpcomingRoundsModel implements Parcelable {
         this.status = status;
     }
 
+    public WinningNumbers getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public void setWinningNumbers(WinningNumbers winningNumbers) {
+        this.winningNumbers = winningNumbers;
+    }
 }

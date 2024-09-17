@@ -37,6 +37,10 @@
     <!--fragment live draw -->
     <string name="error_loading_page">Failed to load the page!</string>
 
+
+    <!--fragment results -->
+    <string name="header_text_result_page">Draw time: %1$s | Round: %2$d</string>
+
     <!--snackbar msgs -->
     <string name="internet_lost_snackbar_message">Internet Connection Lost!\nPlease check your internet connection</string>
 
