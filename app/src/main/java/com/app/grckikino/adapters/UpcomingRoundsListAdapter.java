@@ -78,13 +78,6 @@ public class UpcomingRoundsListAdapter extends RecyclerView.Adapter<UpcomingRoun
     public void onBindViewHolder(@NonNull final ItemViewHolder holder, int position) {
         RoundsModel upcomingDrawsModel = getItem(position);
         holder.bind(context, upcomingDrawsModel, drawCallback);
-//        holder.binding.drawTime.setText(getTimeString(upcomingDrawsModel.getDrawTime()));
-//
-//        updateRemainingTime(holder, upcomingDrawsModel);
-
-
-        // holder.binding.drawContdownTime.startCountdown(upcomingDrawsModel.getDrawTime()); // ovako mozemo ukoliko koristimo napravljenu klasu ContdownTimeTextView
-
     }
 
     private RoundsModel getItem(int position) {
@@ -177,11 +170,11 @@ public class UpcomingRoundsListAdapter extends RecyclerView.Adapter<UpcomingRoun
     }
 
     public void handleRefresh(int oldSize, int newSize) {
-//        if (oldSize - newSize == 1) {
-//            new Handler().post(() -> notifyItemRemoved(0));
-//        } else {
+        if (oldSize - newSize == 1) {
+            new Handler().post(() -> notifyItemRemoved(0));
+        } else {
             new Handler().post(() -> notifyDataSetChanged());
-//        }
+        }
     }
 
     public static void setTextStyleNormal(ItemViewHolder holder) {

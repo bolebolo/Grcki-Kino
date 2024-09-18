@@ -3,6 +3,8 @@ package com.app.grckikino.ui.upcoming_rounds;
 import static com.app.grckikino.utils.KeysAndConstants.GAME_ID;
 import static com.app.grckikino.utils.KeysAndConstants.LOAD_UPCOMING_ROUNDS;
 
+import android.os.Handler;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -41,7 +43,7 @@ public class UpcomingRoundsViewModel extends ViewModel {
                 upcomingDrawsArrayList.setValue(currentList);
             }
         }
-        initList();
+        new Handler().postDelayed(this::initList, 1500);
     }
 
     public void removeAllExpired() {
@@ -53,25 +55,10 @@ public class UpcomingRoundsViewModel extends ViewModel {
                 }
             }
             upcomingDrawsArrayList.setValue(arrayList);
-            if (arrayList.size() < LOAD_UPCOMING_ROUNDS) {// da bi uvek u listi bilo 20
+            if (arrayList.size() < LOAD_UPCOMING_ROUNDS) {
                 initList();
             }
         }
-    }
-
-
-    private ArrayList<RoundsModel> loadItems(int x) {
-        ArrayList<RoundsModel> arrayList = new ArrayList<>();
-        for (int i = 0; i < x; i++) {
-//            if (getCurrentTime(i) - System.currentTimeMillis() >5){
-            arrayList.add(new RoundsModel(i + 5, getCurrentTime(i)));
-        }
-//        }
-        return arrayList;
-    }
-
-    private long getCurrentTime(int i) {
-        return System.currentTimeMillis() + (long) i * 20 * 1000;
     }
 
 }
