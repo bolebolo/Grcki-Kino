@@ -177,11 +177,11 @@ public class UpcomingRoundsListAdapter extends RecyclerView.Adapter<UpcomingRoun
     }
 
     public void handleRefresh(int oldSize, int newSize) {
-        if (oldSize - newSize == 1) {
-            new Handler().post(() -> notifyItemRemoved(0));
-        } else {
+//        if (oldSize - newSize == 1) {
+//            new Handler().post(() -> notifyItemRemoved(0));
+//        } else {
             new Handler().post(() -> notifyDataSetChanged());
-        }
+//        }
     }
 
     public static void setTextStyleNormal(ItemViewHolder holder) {
