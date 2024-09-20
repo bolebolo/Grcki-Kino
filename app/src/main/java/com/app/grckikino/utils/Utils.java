@@ -55,7 +55,7 @@ public class Utils {
     public static String formatNumber(int number) {
         String formatted = String.format(Locale.getDefault(), TWO_DECIMAL_FORMAT,  calculateQuota(number));
         DecimalFormat decimalFormat = new DecimalFormat(QUOTA_FORMAT);
-        return decimalFormat.format(Double.parseDouble(formatted));
+        return decimalFormat.format(Double.parseDouble(formatted.replace(",", ".")));
     }
 
     public static int convertDpToPx(float dp) {
